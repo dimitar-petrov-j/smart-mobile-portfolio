@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "302386936651",
+    "project_id": "camera-app-fe49f",
+    "storage_bucket": "camera-app-fe49f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:302386936651:android:e1ddd5f88477eacd8046ce",
+        "android_client_info": {
+          "package_name": "com.dimitar.cameraapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "302386936651-etl9630r3nbvbr88ro4cnnqr4rri3s6d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQ8RUodhtFrNUZWK5Gy_gFnuRFYXeOtXs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "302386936651-etl9630r3nbvbr88ro4cnnqr4rri3s6d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
