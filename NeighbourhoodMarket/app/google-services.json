@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "378506198092",
+    "firebase_url": "https://office-mobile-1e0c5-default-rtdb.firebaseio.com",
+    "project_id": "office-mobile-1e0c5",
+    "storage_bucket": "office-mobile-1e0c5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:378506198092:android:5bc7941b045818586d48e9",
+        "android_client_info": {
+          "package_name": "com.dimitar.neighbourhoodmarket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "378506198092-a0r6e4nso61qu1uv5o1rg032k5oo5n5v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlmyYr4iFAf3d6QVlQanOMoUUyb0NoIF8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "378506198092-a0r6e4nso61qu1uv5o1rg032k5oo5n5v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
