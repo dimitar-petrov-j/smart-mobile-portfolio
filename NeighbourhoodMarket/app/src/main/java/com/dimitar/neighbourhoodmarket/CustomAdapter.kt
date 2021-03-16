@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class CustomAdapter(private val dataSet: Array<String>) :
+class CustomAdapter(private val dataSet: ArrayList<Item>) :
     RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
     /**
@@ -14,16 +14,18 @@ class CustomAdapter(private val dataSet: Array<String>) :
      * (custom ViewHolder).
      */
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val textView: TextView
 
-        init {
+        fun bindItems(item: Item){
             // Define click listener for the ViewHolder's View.
-            textView = view.findViewById(R.id.textView)
+            val textViewItem = itemView.findViewById(R.id.textViewItem) as TextView
+            val textViewPrice = itemView.findViewById(R.id.textViewPrice) as TextView
+            textViewItem.text = item.item
+            textViewPrice.text = item.price.toString()
         }
     }
 
     // Create new views (invoked by the layout manager)
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): CustomAdapter.ViewHolder {
         // Create a new view, which defines the UI of the list item
         val view = LayoutInflater.from(viewGroup.context)
             .inflate(R.layout.list_layout, viewGroup, false)
@@ -32,11 +34,11 @@ class CustomAdapter(private val dataSet: Array<String>) :
     }
 
     // Replace the contents of a view (invoked by the layout manager)
-    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CustomAdapter.ViewHolder, position: Int) {
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        viewHolder.textView.text = dataSet[position]
+        holder.bindItems(dataSet[position])
     }
 
     // Return the size of your dataset (invoked by the layout manager)

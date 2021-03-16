@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -37,18 +39,49 @@ class MainActivity : AppCompatActivity() {
 //        myRef.addListenerForSingleValueEvent(menuListener)
 //    }
 
+    private fun addPostEventListener(postReference: DatabaseReference, recyclerView: RecyclerView) {
+
+        val list = ArrayList<Item>()
+
+        val postListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // Get Post object and use the values to update the UI
+                list.clear()
+
+                for(e in dataSnapshot.children){
+                    val item = e.getValue<Item>()
+                    list.add(item!!)
+                }
+
+                val adapter = CustomAdapter(list)
+
+                recyclerView.adapter = adapter
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Getting Post failed, log a message
+                Log.w("MainActivity", "loadPost:onCancelled", databaseError.toException())
+            }
+        }
+        postReference.addValueEventListener(postListener)
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val btn = findViewById<Button>(R.id.button)
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+
+        recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
 
         btn.setOnClickListener {
                 val availableItems: List<Item> = mutableListOf(
-                    Item("pain", 3.0),
-                    Item("test", 4.0),
-                    Item("paper", 5.0),
-                    Item("toaster", 6.0)
+                    Item("pain", 3),
+                    Item("test", 4),
+                    Item("paper", 5),
+                    Item("toaster", 6)
                 )
                 availableItems.forEach {
                     val key = myRef.push().key
@@ -59,12 +92,6 @@ class MainActivity : AppCompatActivity() {
 //            Log.i("LOG", menu.toString())
         }
 
-
-
-//        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-//
-//        menu.forEach {
-//
-//        }
+        addPostEventListener(myRef, recyclerView)
     }
 }
