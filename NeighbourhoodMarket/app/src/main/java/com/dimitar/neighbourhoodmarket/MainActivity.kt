@@ -1,5 +1,6 @@
 package com.dimitar.neighbourhoodmarket
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -24,28 +25,12 @@ class MainActivity : AppCompatActivity() {
 
     private val menu: MutableList<Item> = mutableListOf()
 
-
-//    private fun initItemMenu() {
-//        val menuListener = object : ValueEventListener {
-//            override fun onDataChange(dataSnapshot: DataSnapshot) {
-//                menu.clear()
-//                dataSnapshot.children.mapNotNullTo(menu) { it.getValue<Item>(Item::class.java) }
-//            }
-//
-//            override fun onCancelled(databaseError: DatabaseError) {
-//                println("loadPost:onCancelled ${databaseError.toException()}")
-//            }
-//        }
-//        myRef.addListenerForSingleValueEvent(menuListener)
-//    }
-
     private fun addPostEventListener(postReference: DatabaseReference, recyclerView: RecyclerView) {
 
         val list = ArrayList<Item>()
 
         val postListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                // Get Post object and use the values to update the UI
                 list.clear()
 
                 for(e in dataSnapshot.children){
@@ -72,6 +57,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val btn = findViewById<Button>(R.id.button)
+        val btnToCreate = findViewById<ImageButton>(R.id.imageButton)
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
 
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
@@ -93,5 +79,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         addPostEventListener(myRef, recyclerView)
+
+        btnToCreate.setOnClickListener {
+            val intent = Intent(this, CreateFormActivity::class.java)
+            startActivity(intent);
+        }
     }
 }
