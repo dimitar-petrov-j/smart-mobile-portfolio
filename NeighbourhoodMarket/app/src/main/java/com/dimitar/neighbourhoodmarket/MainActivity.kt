@@ -10,6 +10,8 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.dimitar.neighbourhoodmarket.adapter.CustomAdapter
+import com.dimitar.neighbourhoodmarket.model.Item
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -20,10 +22,8 @@ import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
 
-    val database = Firebase.database
-    val myRef = database.getReference("collection")
-
-    private val menu: MutableList<Item> = mutableListOf()
+    private val database = Firebase.database
+    private val myRef = database.getReference("collection")
 
     private fun addPostEventListener(postReference: DatabaseReference, recyclerView: RecyclerView) {
 
@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
                     list.add(item!!)
                 }
 
-                val adapter = CustomAdapter(list)
+                val adapter = CustomAdapter(list) { item -> onItemClicker(item) }
 
                 recyclerView.adapter = adapter
             }
@@ -49,6 +49,14 @@ class MainActivity : AppCompatActivity() {
             }
         }
         postReference.addValueEventListener(postListener)
+    }
+
+    private fun onItemClicker(item: Item){
+        val intent = Intent(this, ItemActivity::class.java)
+        intent.putExtra("itemName", item.item)
+        intent.putExtra("itemPrice", item.price)
+        intent.putExtra("itemID", item.uuid)
+        startActivity(intent)
     }
 
 
@@ -63,26 +71,24 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
 
         btn.setOnClickListener {
-                val availableItems: List<Item> = mutableListOf(
+            val availableItems: List<Item> = mutableListOf(
                     Item("pain", 3),
                     Item("test", 4),
                     Item("paper", 5),
                     Item("toaster", 6)
-                )
-                availableItems.forEach {
-                    val key = myRef.push().key
-                    it.uuid = key!!
-                    myRef.child(key).setValue(it)
-                }
-//            initItemMenu()
-//            Log.i("LOG", menu.toString())
+            )
+            availableItems.forEach {
+                val key = myRef.push().key
+                it.uuid = key!!
+                myRef.child(key).setValue(it)
+            }
         }
 
         addPostEventListener(myRef, recyclerView)
 
         btnToCreate.setOnClickListener {
             val intent = Intent(this, CreateFormActivity::class.java)
-            startActivity(intent);
+            startActivity(intent)
         }
     }
 }

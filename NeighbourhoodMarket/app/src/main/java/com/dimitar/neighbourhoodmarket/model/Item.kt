@@ -1,4 +1,4 @@
-package com.dimitar.neighbourhoodmarket
+package com.dimitar.neighbourhoodmarket.model
 
 import com.google.firebase.database.IgnoreExtraProperties
 
