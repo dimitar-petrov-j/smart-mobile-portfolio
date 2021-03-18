@@ -67,6 +67,7 @@ class CreateFormActivity: AppCompatActivity() {
 
         val itemName = findViewById<EditText>(R.id.editTextItemName)
         val itemPrice = findViewById<EditText>(R.id.editTextItemPrice)
+        val contactInfo = findViewById<EditText>(R.id.editTextContactInfo)
         val btnAdd = findViewById<Button>(R.id.btnAdd)
         val btnCamera = findViewById<ImageButton>(R.id.imgBtnCamera)
         imageView = findViewById<ImageView>(R.id.imageView2)
@@ -74,16 +75,19 @@ class CreateFormActivity: AppCompatActivity() {
         btnAdd.setOnClickListener{
             val name: String = itemName.text.toString()
             val price: Long = itemPrice.text.toString().toLong()
+            val info: String = contactInfo.text.toString()
 
-            val item: Item = Item(name, price)
+            val item = Item(name, price, info)
 
             val key = myRef.push().key
             item.uuid = key!!
             myRef.child(key).setValue(item)
 
-            imagesRef = storageRef.child("images/${uri!!.lastPathSegment}")
+            if(uri != null) {
+                imagesRef = storageRef.child("images/${uri!!.lastPathSegment}")
 
-            imagesRef.putFile(uri!!)
+                imagesRef.putFile(uri!!)
+            }
         }
 
         btnCamera.setOnClickListener {

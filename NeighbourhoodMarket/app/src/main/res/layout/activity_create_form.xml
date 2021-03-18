@@ -50,10 +50,10 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/btnAdd"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.27"
+        app:layout_constraintHorizontal_bias="0.236"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextItemPrice"
-        app:layout_constraintVertical_bias="0.425" />
+        app:layout_constraintVertical_bias="0.653" />
 
     <ImageButton
         android:id="@+id/imgBtnCamera"
@@ -75,10 +75,23 @@
         android:layout_marginTop="12dp"
         android:ems="10"
         android:inputType="number"
-        android:text="Price"
+        android:text="0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.238"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextItemName" />
+
+    <EditText
+        android:id="@+id/editTextContactInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Contact Info"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.238"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextItemPrice" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

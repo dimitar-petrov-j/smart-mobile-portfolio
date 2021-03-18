@@ -55,7 +55,9 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, ItemActivity::class.java)
         intent.putExtra("itemName", item.item)
         intent.putExtra("itemPrice", item.price)
+        intent.putExtra("contactInfo", item.clientInfo)
         intent.putExtra("itemID", item.uuid)
+        intent.putExtra("isPurchased", item.isTaken)
         startActivity(intent)
     }
 
@@ -64,25 +66,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val btn = findViewById<Button>(R.id.button)
         val btnToCreate = findViewById<ImageButton>(R.id.imageButton)
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
 
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
 
-        btn.setOnClickListener {
-            val availableItems: List<Item> = mutableListOf(
-                    Item("pain", 3),
-                    Item("test", 4),
-                    Item("paper", 5),
-                    Item("toaster", 6)
-            )
-            availableItems.forEach {
-                val key = myRef.push().key
-                it.uuid = key!!
-                myRef.child(key).setValue(it)
-            }
-        }
+
 
         addPostEventListener(myRef, recyclerView)
 
