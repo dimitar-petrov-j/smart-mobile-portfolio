@@ -1,5 +1,6 @@
 package com.dimitar.neighbourhoodmarket
 
+import android.annotation.SuppressLint
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -21,6 +22,7 @@ class ItemActivity: AppCompatActivity() {
     private val database = Firebase.database
     private var myRef = database.getReference("collection")
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.item_layout)
@@ -37,14 +39,14 @@ class ItemActivity: AppCompatActivity() {
         val purchased: Boolean = intent.getSerializableExtra("isPurchased") as Boolean
         val clientInfo: String = intent.getSerializableExtra("contactInfo").toString()
         itemName.text = intent.getSerializableExtra("itemName").toString()
-        itemPrice.text = intent.getSerializableExtra("itemPrice").toString()
+        itemPrice.text = "€" + intent.getSerializableExtra("itemPrice").toString()
 
         val purchaseBtn = findViewById<Button>(R.id.btnPurchase)
 
         purchaseBtn.setOnClickListener{
             if(!purchased){
                 val itemRef = myRef.child(uuid)
-                val item = Item(itemName.text.toString(), itemPrice.text.toString().toLong(), clientInfo, uuid, true)
+                val item = Item(itemName.text.toString(), intent.getSerializableExtra("itemPrice").toString().toLong(), clientInfo, uuid, true)
                 itemRef.setValue(item)
 
                 val mNotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager

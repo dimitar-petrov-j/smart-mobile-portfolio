@@ -22,7 +22,7 @@ class CustomAdapter(private val dataSet: ArrayList<Item>, private val clickListe
             val textViewItem = itemView.findViewById(R.id.textViewItem) as TextView
             val textViewPrice = itemView.findViewById(R.id.textViewPrice) as TextView
             textViewItem.text = item.item
-            textViewPrice.text = item.price.toString()
+            textViewPrice.text = "€" + item.price.toString()
             itemView.setOnClickListener { clickListener(item) }
         }
     }
