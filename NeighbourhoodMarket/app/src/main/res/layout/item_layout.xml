@@ -3,22 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_gradient_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_animation"
+    android:contentDescription="@+/item_layout"
     tools:context=".ItemActivity">
 
-    <ImageButton
-        android:id="@+id/imageButtonHome"
-        android:layout_width="62dp"
-        android:layout_height="59dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@android:color/transparent"
-        android:padding="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/icons8_home_26" />
 
     <TextView
         android:id="@+id/textItemName"
@@ -28,6 +19,7 @@
         android:layout_marginEnd="208dp"
         android:layout_marginRight="208dp"
         android:text="Item Name Here"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -39,6 +31,7 @@
         android:layout_marginEnd="208dp"
         android:layout_marginRight="208dp"
         android:text="Item Price Here"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textItemName" />
 
@@ -48,8 +41,61 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="96dp"
         android:text="Mark for Purchase"
+        app:backgroundTint="#03A9F4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.805"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textItemPrice" />
+
+    <ImageButton
+        android:id="@+id/imageButtonHome"
+        style="@style/Widget.AppCompat.ImageButton"
+        android:layout_width="135dp"
+        android:layout_height="64dp"
+        android:layout_marginBottom="16dp"
+        android:background="#00FFFFFF"
+        android:contentDescription="@+/homeImageButton"
+        android:elevation="@android:dimen/app_icon_size"
+        android:scaleType="centerInside"
+
+        android:shape="ring"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/home" />
+
+    <ImageButton
+        android:id="@+id/marketplaceButton"
+        style="@style/Widget.AppCompat.ImageButton"
+        android:layout_width="136dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="16dp"
+        android:background="#00FFFFFF"
+        android:contentDescription="@+/marketplaceImageButton"
+
+        android:elevation="@android:dimen/app_icon_size"
+        android:scaleType="centerInside"
+        android:shape="ring"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/communityButton"
+        app:layout_constraintStart_toEndOf="@+id/homeButton"
+        app:srcCompat="@drawable/shopping_cart" />
+
+    <ImageButton
+        android:id="@+id/communityButton"
+        style="@style/Widget.AppCompat.ImageButton"
+        android:layout_width="136dp"
+        android:layout_height="64dp"
+        android:layout_marginBottom="16dp"
+        android:background="#00FFFFFF"
+        android:contentDescription="@+/communityImageButton"
+        android:elevation="@android:dimen/app_icon_size"
+        android:scaleType="fitCenter"
+
+        android:shape="ring"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/network" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,14 +2,12 @@ package com.dimitar.neighbourhoodmarket
 
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.drawable.AnimationDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.ImageView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import androidx.core.view.isVisible
@@ -17,6 +15,7 @@ import com.dimitar.neighbourhoodmarket.model.Item
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
+import kotlinx.android.synthetic.main.activity_create_form.*
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
@@ -65,6 +64,11 @@ class CreateFormActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_form)
 
+        val animDrawable = create_gradient_layout.background as AnimationDrawable
+        animDrawable.setEnterFadeDuration(20)
+        animDrawable.setExitFadeDuration(5000)
+        animDrawable.start()
+
         val itemName = findViewById<EditText>(R.id.editTextItemName)
         val itemPrice = findViewById<EditText>(R.id.editTextItemPrice)
         val contactInfo = findViewById<EditText>(R.id.editTextContactInfo)
@@ -88,6 +92,11 @@ class CreateFormActivity: AppCompatActivity() {
 
                 imagesRef.putFile(uri!!)
             }
+
+            Toast.makeText(this, "Your item has been submitted!", Toast.LENGTH_SHORT).show()
+
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent);
         }
 
         btnCamera.setOnClickListener {

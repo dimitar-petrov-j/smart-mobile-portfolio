@@ -5,6 +5,7 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import android.util.Log
 import android.widget.*
@@ -13,6 +14,7 @@ import androidx.core.app.NotificationCompat
 import com.dimitar.neighbourhoodmarket.model.Item
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import kotlinx.android.synthetic.main.item_layout.*
 
 class ItemActivity: AppCompatActivity() {
 
@@ -22,6 +24,11 @@ class ItemActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.item_layout)
+
+        val animDrawable = item_gradient_layout.background as AnimationDrawable
+        animDrawable.setEnterFadeDuration(20)
+        animDrawable.setExitFadeDuration(5000)
+        animDrawable.start()
 
         val itemName = findViewById<TextView>(R.id.textItemName)
         val itemPrice = findViewById<TextView>(R.id.textItemPrice)

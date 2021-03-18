@@ -2,44 +2,37 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/create_gradient_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_animation"
+    android:contentDescription="@+/create_gradient_layout"
     tools:context=".CreateFormActivity">
 
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="62dp"
-        android:layout_height="59dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@android:color/transparent"
-        android:padding="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/icons8_home_26" />
 
     <EditText
         android:id="@+id/editTextItemName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="128dp"
+        android:layout_width="230dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="84dp"
         android:ems="10"
         android:inputType="text"
         android:text="Name"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.238"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="304dp"
-        android:layout_marginEnd="116dp"
-        android:layout_marginRight="116dp"
+        android:layout_width="107dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="312dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginRight="56dp"
         android:text="Post"
+        app:backgroundTint="#2196F3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextItemPrice" />
 
@@ -50,48 +43,101 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/btnAdd"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.236"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextItemPrice"
-        app:layout_constraintVertical_bias="0.653" />
+        app:layout_constraintVertical_bias="0.708" />
 
     <ImageButton
         android:id="@+id/imgBtnCamera"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="312dp"
+        android:layout_width="43dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="320dp"
         android:background="@android:color/transparent"
         android:padding="0dp"
         app:layout_constraintEnd_toStartOf="@+id/btnAdd"
-        app:layout_constraintHorizontal_bias="0.314"
+        app:layout_constraintHorizontal_bias="0.821"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextItemPrice"
         app:srcCompat="@android:drawable/ic_menu_camera" />
 
     <EditText
         android:id="@+id/editTextItemPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="230dp"
+        android:layout_height="60dp"
         android:layout_marginTop="12dp"
         android:ems="10"
         android:inputType="number"
         android:text="0"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.238"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextItemName" />
 
     <EditText
         android:id="@+id/editTextContactInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_width="230dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="12dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Contact Info"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.238"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextItemPrice" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        style="@style/Widget.AppCompat.ImageButton"
+        android:layout_width="135dp"
+        android:layout_height="64dp"
+        android:layout_marginBottom="16dp"
+        android:background="#00FFFFFF"
+        android:contentDescription="@+/homeImageButton"
+        android:elevation="@android:dimen/app_icon_size"
+        android:scaleType="centerInside"
+
+        android:shape="ring"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/home" />
+
+    <ImageButton
+        android:id="@+id/marketplaceButton"
+        style="@style/Widget.AppCompat.ImageButton"
+        android:layout_width="136dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="16dp"
+        android:background="#00FFFFFF"
+        android:contentDescription="@+/marketplaceImageButton"
+
+        android:elevation="@android:dimen/app_icon_size"
+        android:scaleType="centerInside"
+        android:shape="ring"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/communityButton"
+        app:layout_constraintStart_toEndOf="@+id/homeButton"
+        app:srcCompat="@drawable/shopping_cart" />
+
+    <ImageButton
+        android:id="@+id/communityButton"
+        style="@style/Widget.AppCompat.ImageButton"
+        android:layout_width="136dp"
+        android:layout_height="64dp"
+        android:layout_marginBottom="16dp"
+        android:background="#00FFFFFF"
+        android:contentDescription="@+/communityImageButton"
+        android:elevation="@android:dimen/app_icon_size"
+        android:scaleType="fitCenter"
+
+        android:shape="ring"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/network" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
