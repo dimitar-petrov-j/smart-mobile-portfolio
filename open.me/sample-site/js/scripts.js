@@ -34,3 +34,35 @@ if(typeof Notification!==typeof undefined){ //First check if the API is availabl
 	});
 }
  
+
+let installPrompt; //Variable to store the install action in
+window.addEventListener("beforeinstallprompt",(event)=>{	
+	event.preventDefault(); //Prevent the event (this prevents the default bar to show up)
+	installPrompt=event; //Install event is stored for triggering it later
+	console.log("log")
+	document.getElementById("installbutton").style.display = "block";
+});
+
+
+function runInstall(){
+//Recognize the install variable from before?
+installPrompt.prompt();
+document.getElementById("installbutton").style.display = "none";
+installPrompt.userChoice.then((choiceResult)=>{
+	document.getElementById("installbutton").style.display = "none";
+	if(choiceResult.outcome!=="accepted"){
+		document.getElementById("installbutton").style.display = "block";
+  }
+  installPrompt=null;
+});
+}
+
+//iOS install tip show
+const isIOSUsed=()=>{
+	const userAgent=window.navigator.userAgent.toLowerCase();
+	return /iphone|ipad|ipod/.test(userAgent); //Return if iOS is used (iPhone, iPod or iPad)
+  }
+  const standaloneModeActive=()=>("standalone" in window.navigator)&&(window.navigator.standalone); //Will be true if the PWA is used
+  if(isIOSUsed()&&!standaloneModeActive()){ 
+	alert("We're very sorry, but you can not install this project on an iOS application.")
+  }
