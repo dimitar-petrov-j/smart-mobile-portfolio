@@ -3,7 +3,9 @@ const appFiles=[
 	"/dunplab-manifest-36319.json",
 	"/js/scripts.js",
 	"/css/stylesheet.css",
-	"/images/yes.gif",
+	"/js/random-color.js",
+  "/js/intersection-spawn.js",
+  "js/snap.js",
   "index.html",
   "/"
 ];
